@@ -1,0 +1,26 @@
+[build]
+  command = "node tools/build.mjs"
+  publish = "public"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Automated vendor payouts: every day at 06:00 UTC (09:00 Nairobi)
+[functions."payout-run"]
+  schedule = "0 6 * * *"
+
+# Pretty API paths: /api/checkout-init -> /.netlify/functions/checkout-init
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Live (Supabase) listings that were published after the last build still resolve
+[[redirects]]
+  from = "/product/*"
+  to = "/product-live.html"
+  status = 200

@@ -1,0 +1,12 @@
+{
+  "name": "nexora-digital",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nexora Digital: multi-vendor digital services and downloads marketplace (Netlify + Supabase + Paystack)",
+  "type": "commonjs",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "dev": "netlify dev"
+  },
+  "engines": { "node": ">=18" }
+}
